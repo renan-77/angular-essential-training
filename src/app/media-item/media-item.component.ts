@@ -2,8 +2,8 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'app-media-item',
-    templateUrl: './media-item/media-item.component.html',
-    styleUrls: ['./media-item/media-item.component.css']
+    templateUrl: './media-item.component.html',
+    styleUrls: ['./media-item.component.css']
 })
 
 export class MediaItemComponent {

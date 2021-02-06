@@ -1,5 +1,11 @@
 <section>
-    <div class="container">
+    <div class="container-fluid text-center">
+        <div class="row justify-content-center">
+            <header class="d-inline-block">{{ mediaItems | categoryList }}</header>
+        </div>
+        <div class="row justify-content-center m-5 text-justify">
+            <app-media-item-form></app-media-item-form>
+        </div>
         <div class="row justify-content-center">
             <app-media-item *ngFor="let mediaItem of mediaItems"
                             [mediaItem]="mediaItem"

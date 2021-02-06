@@ -1,19 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { MediaItemComponent } from './media-item.component';
-import { MediaItemListComponent } from './media-item-list.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { AppComponent } from './component/app.component';
+import { MediaItemComponent } from './media-item/media-item.component';
+import { MediaItemListComponent } from './media-item-list/media-item-list.component';
 import { FavoriteDirective } from './favorite.directive';
+import { CategoryListPipe } from './category-list.pipe';
+import { MediaItemFormComponent } from './media-item-form/media-item-form.component';
 
 @NgModule({
     imports: [
-        BrowserModule
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AppComponent,
         MediaItemComponent,
         MediaItemListComponent,
-        FavoriteDirective
+        FavoriteDirective,
+        CategoryListPipe,
+        MediaItemFormComponent
     ],
     bootstrap: [
         AppComponent
