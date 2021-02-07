@@ -11,7 +11,7 @@ export class MediaItemComponent {
     @Output() delete = new EventEmitter();
 
     onDelete(): void{
-        console.log('Deleted');
-        this.delete.emit(this.mediaItem.name);
+        console.log('Got on OnDelete in media-item.component.ts ' + this.mediaItem.name);
+        this.delete.emit(this.mediaItem);
     }
 }
