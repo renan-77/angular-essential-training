@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <title>MyApp</title>
 </head>
-<h1 class="text-center text-white mt-5">Movies</h1>
-<div class="row justify-content-center m-5 text-justify">
-    <app-media-item-form></app-media-item-form>
+<h1 class="text-center text-white m-5">Watch List</h1>
+<div class="container-fluid text-center">
+    <nav>
+        <a routerLink="/">
+            <img src="assets/images/04.png" class="icon" />
+        </a>
+        <a routerLink="/Movies">
+            <img src="assets/images/03.png" class="icon" />
+        </a>
+        <a routerLink="/Series">
+            <img src="assets/images/02.png" class="icon" />
+        </a>
+    </nav>
 </div>
-<app-media-item-list></app-media-item-list>
+<div class="row justify-content-center m-5 text-justify">
+<!--    <app-media-item-form></app-media-item-form>-->
+    <router-outlet></router-outlet>
+</div>
+<!--<app-media-item-list></app-media-item-list>-->
 </html>

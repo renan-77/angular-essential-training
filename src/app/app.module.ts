@@ -1,9 +1,9 @@
 // Modules Import
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule, HttpXhrBackend } from '@angular/common/http';
+import { MockXHRBackend } from './mock-xhr-backend';
+import { routing } from './app.routing';
 
 // Services Import
 // import { MediaItemService } from './media-item.service';
@@ -18,7 +18,6 @@ import { CategoryListPipe } from './category-list.pipe';
 import { AppComponent } from './component/app.component';
 import { MediaItemComponent } from './media-item/media-item.component';
 import { MediaItemListComponent } from './media-item-list/media-item-list.component';
-import { MediaItemFormComponent } from './media-item-form/media-item-form.component';
 
 import { lookupListToken, lookupList } from './providers';
 
@@ -26,22 +25,21 @@ import { lookupListToken, lookupList } from './providers';
     imports: [
         BrowserModule,
         HttpClientModule,
-        FormsModule,
-        ReactiveFormsModule,
+        routing
     ],
     declarations: [
         AppComponent,
         MediaItemComponent,
         MediaItemListComponent,
         FavoriteDirective,
-        CategoryListPipe,
-        MediaItemFormComponent
+        CategoryListPipe
     ],
     bootstrap: [
         AppComponent
     ],
     providers: [
-        { provide: lookupListToken, useValue: lookupList }
+        { provide: lookupListToken, useValue: lookupList },
+        { provide: HttpXhrBackend, useClass: MockXHRBackend }
     ]
 })
 
