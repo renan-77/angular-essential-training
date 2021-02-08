@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 
 export class MediaItemService {
+    constructor(private http: HttpClient) { }
+
     mediaItems = [
         {
             id: 1,
@@ -92,8 +96,16 @@ export class MediaItemService {
         }
     ];
 
-    get(): unknown{
-        return this.mediaItems;
+    get(medium): unknown{
+        const getOptions = {
+            params: { medium }
+        };
+        return this.http.get<MediaItemsResponse>('mediaitems', getOptions)
+            .pipe(
+                map( (response: MediaItemsResponse) => {
+                    return response.mediaItems;
+                })
+            );
     }
 
     add(mediaItem): void {
@@ -107,5 +119,18 @@ export class MediaItemService {
             this.mediaItems.splice(index, 1);
         }
     }
-    constructor() { }
+}
+
+export interface MediaItem {
+    id: number;
+    name: string;
+    medium: string;
+    category: string;
+    year: number;
+    watchedOn: number;
+    isFavorite: boolean;
+}
+
+interface MediaItemsResponse{
+    mediaItems: MediaItem[];
 }

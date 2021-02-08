@@ -8,7 +8,7 @@ export class CategoryListPipe implements PipeTransform {
     transform(mediaItems): unknown {
         const categories = [];
         mediaItems.forEach(mediaItem => {
-            if (categories.indexOf(mediaItem.category) <= -1){
+            if (categories.indexOf(mediaItem.category) <= -1) {
                 categories.push(mediaItem.category);
             }
         });
